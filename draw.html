@@ -11,9 +11,11 @@
             padding: 0px;
             margin: 0px;
             box-sizing: border-box;
+            
+        }
+        body {
             overflow: hidden;
         }
-
         #canvas {
             display: block;
             border: 1px solid red;
@@ -38,7 +40,7 @@
                 ctx.moveTo(e.clientX,e.clientY);
                 ctx.lineWidth = 10;
                 ctx.lineCap = "round ";
-                console.log(e.clientX);
+                // console.log(e.clientX);
             }
             canvas.onmouseup = () => {
                 flag = false;

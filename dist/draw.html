@@ -10,9 +10,11 @@
             padding: 0px;
             margin: 0px;
             box-sizing: border-box;
+            
+        }
+        body {
             overflow: hidden;
         }
-
         #canvas {
             display: block;
             border: 1px solid red;
@@ -35,8 +37,7 @@ if (!isPhone) {
     ctx.beginPath();
     ctx.moveTo(e.clientX, e.clientY);
     ctx.lineWidth = 10;
-    ctx.lineCap = "round ";
-    console.log(e.clientX);
+    ctx.lineCap = "round "; // console.log(e.clientX);
   };
 
   canvas.onmouseup = function () {
