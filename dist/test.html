@@ -6,31 +6,67 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>.box {
-            width: 100px;
-            height: 100px;
-            border: 1px solid red;
-            margin: 100px;
-            animation: mov 8s forwards;
+    <style>* {
+            padding: 0px;
+            margin: 0px;
+            box-sizing: border-box;
         }
 
-        @keyframes mov {
-            0% {
-                transform: translate(0px);
-            }
-
-            40% {
-                transform: translateX(300px) rotate(360deg);
-            }
-
-            100% {
-                transform: translateY(300px) translateY(300px) rotate(720px);
-            }
+        #canvas {
+            display: block;
+            border: 1px solid red;
         }</style>
 </head>
 
 <body>
-    <div class="box"></div>
+    <canvas id="canvas"></canvas>
+    <script>var canvas = document.getElementById("canvas");
+canvas.width = document.documentElement.clientWidth;
+canvas.height = document.documentElement.clientHeight;
+canvas.style.border = "1px solid blue";
+var ctx = canvas.getContext("2d");
+var flag = false;
+var isPhone = ('ontouchstart' in document.documentElement);
+
+if (!isPhone) {
+  canvas.onmousedown = function (e) {
+    flag = true;
+    ctx.beginPath();
+    ctx.moveTo(e.clientX, e.clientY);
+    ctx.lineWidth = 10;
+    ctx.lineCap = "round ";
+    console.log(e.clientX);
+  };
+
+  canvas.onmouseup = function () {
+    flag = false;
+  };
+
+  canvas.onmousemove = function (e) {
+    if (flag) {
+      // ctx.fillstyle = "black";
+      // ctx.beginPath();
+      // ctx.moveTo(0,0);
+      ctx.lineTo(e.clientX, e.clientY);
+      ctx.stroke(); // ctx.fill();
+
+      ctx.moveTo(e.clientX, e.clientY);
+    }
+  };
+} else {
+  ctx.ontouchstart = function (e) {
+    ctx.beginPath();
+    ctx.moveTo(e.touches[0].clientX, e.touches[0].clientY);
+    ctx.lineWidth = 10;
+    ctx.lineCap = "round ";
+  };
+
+  ctx.ontouchmove = function (e) {
+    ctx.lineTo(e.touches[0].clientX, e.touches[0].clientY);
+    ctx.stroke();
+    ctx.moveTo(e.touches[0].clientX, e.touches[0].clientY);
+  };
+}</script>
 </body>
 
 </html>
