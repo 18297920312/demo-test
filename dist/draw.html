@@ -25,8 +25,8 @@
     <canvas id="canvas"></canvas>
     <script>var canvas = document.getElementById("canvas");
 canvas.width = document.documentElement.clientWidth;
-canvas.height = document.documentElement.clientHeight;
-canvas.style.border = "1px solid blue";
+canvas.height = document.documentElement.clientHeight; // canvas.style.border = "1px solid blue";
+
 var ctx = canvas.getContext("2d");
 var flag = false;
 var isPhone = ("ontouchstart" in document.documentElement);
