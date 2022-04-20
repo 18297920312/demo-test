@@ -54,13 +54,13 @@
                     }
                 }
         } else {
-            ctx.ontouchstart = (e) => {
+            canvas.ontouchstart = (e) => {
                 ctx.beginPath();
                 ctx.moveTo(e.touches[0].clientX,e.touches[0].clientY);
                 ctx.lineWidth = 10;
                 ctx.lineCap = "round ";
             }
-            ctx.ontouchmove = (e) => {
+            canvas.ontouchmove = (e) => {
                 ctx.lineTo(e.touches[0].clientX,e.touches[0].clientY);
                 ctx.stroke();
                 ctx.moveTo(e.touches[0].clientX,e.touches[0].clientY);
